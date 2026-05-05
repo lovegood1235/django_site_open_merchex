@@ -1,11 +1,17 @@
 
 from django.http import HttpResponse
 from django.shortcuts import render
+from listings.models import Band, Title
 
 # Une vue est une fonction qui accepte un objet HttpRequest comme paramètre et retourne un objetHttpResponse  .
 
 def hello(request):
-    return HttpResponse("<h1>hello Django!</h1>")
+    bands = Band.objects.all()
+    return render(request , "listings/hello.html" , {"bands" : bands})
+
+
 
 def about(request):
-    return HttpResponse("<h1>information</h1>")
+    return render(request , 'listings/about.html' , {})
+
+
